@@ -1,0 +1,29 @@
+<div class="containerListDoctors">
+    <input type="text" ng-model="searchCriteria" placeholder="O que você está buscando?" class="form-control" />
+    <br>
+    <table class="table table-responsive table-hover table-striped">
+        <thead>
+            <tr>
+                <th></th>
+                <th scope="row" class="cabecalhoTabela"><a href="" ng-click="orderBy('id')">Código</a></th>
+                <th scope="row" class="cabecalhoTabela"><a href="" ng-click="orderBy('name')">Nome</a></th>
+                <th scope="row" class="cabecalhoTabela"><a href="" ng-click="orderBy('cpf')">CPF</a></th>
+                <th scope="row" class="cabecalhoTabela"><a href="" ng-click="orderBy('phone')">Telefone</a></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="patient in patients | filter: searchCriteria | orderBy:sortCriteria:orderingDirection">
+                <td><input type="checkbox" ng-model="patient.selected"/></td>
+                <td>{{patient.id}}</td>
+                <td class="dadosEsquerdaTabela">{{patient.name}}</td>
+                <td>{{patient.cpf}}</td>
+                <td>{{patient.phone}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <hr>
+    <div class="alinhamentoBotoesDireita">
+        <button class="btn btn-danger" ng-click="deletePatients(patients)" ng-disabled="!isPatientSelected(patients)">Apagar paciente</button>
+        <a class="btn btn-primary" href="#!/newpatient">Novo paciente</a>
+    </div>
+</div>

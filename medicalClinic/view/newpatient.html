@@ -1,0 +1,21 @@
+<form name="medicalClinicForm">
+    <div class="form-group">
+        <label for="name">Nome*</label>
+        <input type="text" class="form-control" id="name" ng-required="true" ng-model="patient.name" placeholder="Nome" />
+    </div>
+    <div class="form-group">
+        <label for="cpf">CPF*</label>
+        <input type="text" class="form-control" id="cpf" ng-required="true" ng-model="patient.cpf" placeholder="CPF" />
+    </div>
+    <div class="form-group">
+        <label for="phone">Telefone</label>
+        <input type="text" class="form-control" id="phone" ng-model="patient.phone" placeholder="Telefone" />
+    </div>
+    
+    <hr/>
+
+    <div class="alinhamentoBotoesDireita">
+        <button class="btn btn-primary" ng-click="addPatient(patient)" ng-disabled="medicalClinicForm.$invalid">Adicionar paciente</button>
+    </div>
+    </div>
+</form>

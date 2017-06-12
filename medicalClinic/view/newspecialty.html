@@ -1,0 +1,12 @@
+<form name="medicalClinicForm">
+    <div class="form-group">
+        <label for="name">Nome da especialidade*</label>
+        <input type="text" class="form-control" id="name" ng-required="true" ng-model="specialty.name" placeholder="Nome da especialidade" />
+    </div>
+    
+    <hr/>
+
+    <div class="alinhamentoBotoesDireita">
+        <button class="btn btn-primary" ng-click="addSpecialty(specialty)" ng-disabled="medicalClinicForm.$invalid">Adicionar especialidade</button>
+    </div>
+</form>
