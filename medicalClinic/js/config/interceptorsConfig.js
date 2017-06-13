@@ -1,5 +1,4 @@
-/*app.config(function ($httpProvider) {
-	$httpProvider.interceptors.push("timestampInterceptor");
+app.config(function ($httpProvider) {
 	$httpProvider.interceptors.push("errorInterceptor");
 	$httpProvider.interceptors.push("loadingInterceptor");
-});*/
+});

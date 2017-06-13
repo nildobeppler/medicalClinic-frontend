@@ -1,4 +1,4 @@
-angular.module("medicalClinic").factory("loadingInterceptor", function ($q, $rootScope, $timeout) {
+app.factory("loadingInterceptor", function ($q, $rootScope, $timeout) {
 	return {
 		request: function (config) {
 			$rootScope.loading = true;

@@ -1,34 +1,10 @@
-app.controller("doctorsCtrl", function ($scope, doctorsAPI, specialtiesAPI, responseDoctors) {
+app.controller("doctorsCtrl", function ($scope, doctorsAPI, responseDoctors, responseSpecialties) {
     
     $scope.doctors = responseDoctors.data;
     
-    $scope.specialties = [];
-
-    var carrySpecialties = function () {
-        specialtiesAPI.getEspecialties().then(function (response) {
-            var data = response.data;
-            $scope.specialties = data;
-        });
-    };
-
-    $scope.selected = [];
-
-    $scope.exists = function (item) {
-        return $scope.selected.indexOf(item) > -1;
-    };
-
-    $scope.toggleSelection = function (item) {
-        var idx = $scope.selected.indexOf(item);
-        if (idx > -1) {
-          $scope.selected.splice(idx, 1);
-        }
-        else {
-          $scope.selected.push(item);
-        }
-    };  
+    $scope.specialties = responseSpecialties.data;
 
     $scope.deleteDoctors = function (doctors) {
-
         $scope.doctors = doctors.filter(function(doctor){
             if (doctor.selected) {
                doctorsAPI.deleteDoctor(doctor);
@@ -48,7 +24,5 @@ app.controller("doctorsCtrl", function ($scope, doctorsAPI, specialtiesAPI, resp
         $scope.sortCriteria = field;
         $scope.orderingDirection = !$scope.orderingDirection;
     };
-
-    carrySpecialties();
 
 });

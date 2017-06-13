@@ -1,4 +1,5 @@
 app.factory("doctorsAPI", function ($http, config) {
+	
 	var _getDoctors = function () {
 		return $http.get(config.baseUrl + "/doctors");
 	};

@@ -6,18 +6,31 @@ app.config(["$routeProvider", function($routeProvider) {
 		resolve: {
 			responseDoctors: function (doctorsAPI) {
 				return doctorsAPI.getDoctors();
+			},
+			responseSpecialties: function (specialtiesAPI) {
+				return specialtiesAPI.getEspecialties();
 			}
 		}
 	});
 
 	$routeProvider.when("/newdoctor", {
 		templateUrl: "view/newdoctor.html",
-		controller: "newDoctorCtrl"
+		controller: "newDoctorCtrl",
+		resolve: {
+			responseSpecialties: function (specialtiesAPI) {
+				return specialtiesAPI.getEspecialties();
+			}
+		}
 	});
 
 	$routeProvider.when("/specialties", {
 		templateUrl: "view/specialties.html",
-		controller: "specialtiesCtrl"
+		controller: "specialtiesCtrl",
+		resolve: {
+			responseSpecialties: function (specialtiesAPI) {
+				return specialtiesAPI.getEspecialties();
+			}
+		}
 	});
 
 	$routeProvider.when("/newspecialty", {
@@ -39,5 +52,16 @@ app.config(["$routeProvider", function($routeProvider) {
 		templateUrl: "view/newpatient.html",
 		controller: "newPatientCtrl"
 	});
+
+	$routeProvider.when("/newconsultation", {
+		templateUrl: "view/newconsultation.html",
+		controller: "newConsultationCtrl"
+	});
+
+	$routeProvider.when("/error", {
+		templateUrl: "view/error.html"
+	});
+
+	$routeProvider.otherwise({redirectTo: "/"});
 
 }]);

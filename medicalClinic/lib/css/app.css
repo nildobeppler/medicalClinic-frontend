@@ -8,6 +8,8 @@ body {
     margin-right: auto;
     position: relative;
     padding: 3%;
+    margin: 0 auto;
+    width: 90%;
 }
 
 .containerList {
@@ -28,6 +30,13 @@ body {
 
 .alinhamentoBotoesDireita {
     text-align: right;
+}
+
+.div-ajax-carregamento-pagina {
+    position:absolute;
+    margin-top: 150px;
+    left:45%;
+    top:50%;
 }
 
 

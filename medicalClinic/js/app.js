@@ -1,1 +1,1 @@
-app = angular.module("medicalClinic", ["ngRoute"]);
+app = angular.module("medicalClinic", ["ngRoute","ngMaterial"]);

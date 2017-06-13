@@ -1,12 +1,8 @@
-app.controller("newDoctorCtrl", function ($scope, doctorsAPI, specialtiesAPI, $location) {
+app.controller("newDoctorCtrl", function ($scope, doctorsAPI, $location, responseSpecialties) {
 
-    $scope.specialties = [];
-    var carrySpecialties = function () {
-        specialtiesAPI.getEspecialties().then(function (response) {
-            var data = response.data;
-            $scope.specialties = data;
-        });
-    };
+    $scope.specialties = responseSpecialties.data;
+
+    $scope.selected = [];
 
     $scope.addDoctor = function(doctor) {
         doctor.specialties = $scope.selected;
@@ -18,8 +14,18 @@ app.controller("newDoctorCtrl", function ($scope, doctorsAPI, specialtiesAPI, $l
         }); 
     };
 
-    $scope.selected = [];
+    $scope.exists = function (item) {
+        return $scope.selected.indexOf(item) > -1;
+    };
 
-    carrySpecialties();
+    $scope.toggleSelection = function (item) {
+        var idx = $scope.selected.indexOf(item);
+        if (idx > -1) {
+          $scope.selected.splice(idx, 1);
+        }
+        else {
+          $scope.selected.push(item);
+        }
+    }; 
 
 });

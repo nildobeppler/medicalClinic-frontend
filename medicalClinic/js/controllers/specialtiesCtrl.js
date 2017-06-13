@@ -1,18 +1,11 @@
-app.controller("specialtiesCtrl", function($scope, specialtiesAPI) {
-    $scope.specialties = [];
-    var carrySpecialties = function () {
-        specialtiesAPI.getEspecialties().then(function (response) {
-            var data = response.data;
-            $scope.specialties = data;
-        });
-    };
+app.controller("specialtiesCtrl", function($scope, specialtiesAPI, responseSpecialties) {
+
+    $scope.specialties = responseSpecialties.data;
 
     $scope.orderBy = function(field) {
         $scope.sortCriteria = field;
         $scope.orderingDirection = !$scope.orderingDirection;
     };
-
-    $scope.selected = [];
 
     $scope.isSpecialtySelected = function(specialties) {
         return specialties.some(function(specialty){
@@ -21,7 +14,6 @@ app.controller("specialtiesCtrl", function($scope, specialtiesAPI) {
     };
 
     $scope.deleteSpecialties = function (specialties) {
-
         $scope.specialties = specialties.filter(function(specialty){
             if (specialty.selected) {
                specialtiesAPI.deleteSpecialty(specialty);
@@ -31,5 +23,4 @@ app.controller("specialtiesCtrl", function($scope, specialtiesAPI) {
         });
     };
 
-    carrySpecialties();
 });
